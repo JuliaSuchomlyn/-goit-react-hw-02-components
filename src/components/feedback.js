@@ -1,4 +1,7 @@
 import React from 'react';
+import { Statistics } from './Statistics/Statistics';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Section } from './Section/Section';
 
 export class Feedback extends React.Component {
 
@@ -13,7 +16,8 @@ export class Feedback extends React.Component {
     }
 
     countPositiveFeedbackPercentage = (total, good) => {
-        return Math.round((good / total) * 100)
+        const positivePercentages = Math.round((good / total) * 100)
+        return total === 0 ? 0 : positivePercentages ;
 
     }
     handleClick = (key) => {
@@ -27,31 +31,32 @@ export class Feedback extends React.Component {
     
 
     render() {
-        // const { good, neutral, bad } = this.state;
+        const { good, neutral, bad } = this.state;
         const total = this.countTotalFeedback();
         const positiveFeedback = this.countPositiveFeedbackPercentage(
             total,
-            this.state.good
+            good
         )
-        String.prototype.firstLetterToUppercase = function() {
-            return this[0].toUpperCase() + this.slice(1);
-        }
 
 
         return (            
             <div>
-                <div>
-                    <h2>Please leave feedback</h2>
-                    {Object.keys(this.state).map((key) => (<button key={key} onClick={() => this.handleClick(key)}>{ key.firstLetterToUppercase() }</button>))}
-                </div>
-                <h2>Statistics</h2>
-                <ul>
-                    <li>Good:{this.state.good}</li>
-                    <li>Neutral:{this.state.neutral}</li>
-                    <li>Bad:{this.state.bad}</li>
-                    <li>Total:{total}</li>
-                    <li>Positive feedback: { positiveFeedback }</li>
-                </ul>
+                <Section title="Please leave feedback">
+                    <FeedbackOptions
+                        options={Object.keys(this.state)}
+                        clickFeedback={this.handleClick}                    
+                    />
+                </Section>
+
+                <Section title="Statistics">
+                    <Statistics
+                        good={good}
+                        neutral={neutral}
+                        bad={bad}
+                        total={total}
+                        positiveFeedback={positiveFeedback}
+                        />
+                </Section>
             </div>
             
         );
