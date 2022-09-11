@@ -40,7 +40,7 @@ export class Feedback extends React.Component {
         )
 
         return (            
-            <div>
+            <div className='container__element '>
                 <Section title="Please leave feedback">
                     <FeedbackOptions
                         options={Object.keys(this.state)}

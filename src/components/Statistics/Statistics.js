@@ -5,11 +5,11 @@ import {  StatisticsList, StatisticsItem,  } from "./Statistics.styled";
 export const Statistics = ({ good, neutral, bad, total, positiveFeedback }) => {
     return <StatisticsList>
 
-                <StatisticsItem>Good: { good }</StatisticsItem>
-                <StatisticsItem>Neutral: { neutral}</StatisticsItem>
-                <StatisticsItem>Bad: { bad }</StatisticsItem>
-                <StatisticsItem>Total: { total}</StatisticsItem>
-                <StatisticsItem>Positive feedback: { positiveFeedback} %</StatisticsItem>
+                <StatisticsItem>Good:<span>{ good }</span> </StatisticsItem>
+                <StatisticsItem>Neutral: <span>{ neutral}</span></StatisticsItem>
+                <StatisticsItem>Bad: <span>{ bad }</span></StatisticsItem>
+                <StatisticsItem>Total: <span>{ total}</span></StatisticsItem>
+                <StatisticsItem><span className="positiveFeedback">Positive feedback:</span> <span className="positiveFeedback">{ positiveFeedback}%</span></StatisticsItem>
 
         </StatisticsList>
 }
