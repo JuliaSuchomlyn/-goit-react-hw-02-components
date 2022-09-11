@@ -39,7 +39,6 @@ export class Feedback extends React.Component {
             good
         )
 
-
         return (            
             <div>
                 <Section title="Please leave feedback">
