@@ -1,4 +1,4 @@
-// import ProppTypes from "prop-types"
+import PropTypes from 'prop-types';
 import { PageSection, SectionTitle } from "./Section.styled"
 
 export const Section = ({title, children }) => {
@@ -8,4 +8,9 @@ export const Section = ({title, children }) => {
             {children}
         </PageSection>
     );
+}
+
+Section.propTypes = {
+    title: PropTypes.string,
+    children: PropTypes.arrayOf(PropTypes.element.isRequired).isRequired,
 }
